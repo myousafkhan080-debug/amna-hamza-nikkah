@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Amna &amp; Hamza — Wedding Invitation</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Cinzel, Cormorant Garamond, Great Vibes, Amiri (for Bismillah) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pearl: {
+              50: '#FDFBF7',
+              100: '#FAF6EE',
+              200: '#F4ECE0',
+              300: '#EAE0CE',
+              400: '#DFD0B8',
+            },
+            champagne: {
+              300: '#E5CFA3',
+              400: '#D4B67B',
+              500: '#B89758',
+              600: '#9A7B3E',
+              700: '#785E2B',
+            }
+          },
+          fontFamily: {
+            cinzel: ['Cinzel', 'serif'],
+            cormorant: ['Cormorant Garamond', 'serif'],
+            script: ['Great Vibes', 'cursive'],
+            arabic: ['Amiri', 'serif'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Custom Pearl Lace Luxury Styling & 3D Envelope Mechanics */
+    :root {
+      --pearl-bg: #FAF6EE;
+      --ivory-card: #FFFDF9;
+      --gold-primary: #B89758;
+      --gold-light: #DFC38A;
+      --gold-dark: #856830;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+      background: radial-gradient(circle at 50% 35%, #FFFDF9 0%, #F5EDE0 55%, #E7DBC7 100%);
+      font-family: 'Cormorant Garamond', serif;
+      color: #4A3E2D;
+    }
+
+    body.lock-scroll {
+      overflow: hidden;
+      height: 100dvh;
+    }
+
+    body.unlock-scroll {
+      overflow-y: auto;
+      height: auto;
+      scroll-behavior: smooth;
+    }
+
+    /* Subtle Damask / Lace Micro-Texture Overlay */
+    .lace-bg-pattern {
+      background-image:
+        radial-gradient(circle at 20px 20px, rgba(184, 151, 88, 0.08) 1.5px, transparent 1.6px),
+        radial-gradient(circle at 0px 0px, rgba(255, 255, 255, 0.85) 2px, transparent 2.1px);
+      background-size: 40px 40px;
+    }
+
+    /* Scalloped Pearl Lace Border Effect */
+    .pearl-lace-frame {
+      position: relative;
+      background: linear-gradient(165deg, #FFFFFF 0%, #FCF9F2 50%, #F7EFE2 100%);
+      box-shadow:
+        0 24px 60px -12px rgba(92, 72, 38, 0.22),
+        0 4px 18px rgba(184, 151, 88, 0.14),
+        inset 0 0 0 1px rgba(184, 151, 88, 0.35),
+        inset 0 0 28px rgba(235, 222, 198, 0.45);
+    }
+
+    /* Inner Fine Gold & Pearl Double Line */
+    .inner-gold-border {
+      border: 1px solid rgba(184, 151, 88, 0.45);
+      box-shadow: inset 0 0 0 3px #FFFDF9, inset 0 0 0 4px rgba(184, 151, 88, 0.28);
+    }
+
+    /* Shimmering Gold Foil Text */
+    .gold-foil-text {
+      background: linear-gradient(135deg, #8F6F32 0%, #C8A766 30%, #9E7C3B 55%, #DFC184 80%, #87662A 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 200% auto;
+      animation: goldShimmer 7s ease-in-out infinite;
+    }
+
+    @keyframes goldShimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    /* =========================================================
+       FULL-PAGE EDGE-TO-EDGE 3D SILK & PEARL-LACE ENVELOPE
+    ========================================================== */
+    .fullscreen-envelope-overlay {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100dvh;
+      z-index: 50;
+      perspective: 2200px;
+      overflow: hidden;
+      cursor: pointer;
+      touch-action: manipulation;
+      background: linear-gradient(160deg, #FFFDF9 0%, #F7EFE1 50%, #ECE0CB 100%);
+      transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.9s ease;
+    }
+
+    .fullscreen-envelope-overlay.is-dissolved {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .envelope-full-shell {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      cursor: pointer;
+    }
+
+    /* Embossed Silk Crease Lines & Side Pocket Panels */
+    .envelope-side-folds {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      pointer-events: none;
+      background:
+        linear-gradient(to top right, #F5ECDC 49.6%, rgba(184, 151, 88, 0.32) 49.9%, rgba(255, 255, 255, 0.65) 50.2%, transparent 50.5%),
+        linear-gradient(to top left, #F3E8D6 49.6%, rgba(184, 151, 88, 0.32) 49.9%, rgba(255, 255, 255, 0.65) 50.2%, transparent 50.5%);
+    }
+
+    /* Full-Width Bottom Pocket Flap */
+    .envelope-full-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 56%;
+      z-index: 4;
+      pointer-events: none;
+      background: linear-gradient(180deg, #FAF4E8 0%, #EFE3CE 60%, #E7D7BC 100%);
+      clip-path: polygon(0 100%, 50% 6%, 100% 100%);
+      filter: drop-shadow(0 -8px 22px rgba(105, 82, 40, 0.14));
+    }
+
+    /* Full-Width Hinged Top Triangular Flap */
+    .envelope-full-top {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 58%;
+      z-index: 6;
+      background: linear-gradient(180deg, #FFFDF9 0%, #F7EFE1 65%, #EDE0C9 100%);
+      clip-path: polygon(0 0, 50% 96%, 100% 0);
+      transform-origin: top center;
+      transition: transform 1.15s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.35s step-end;
+      filter: drop-shadow(0 12px 24px rgba(92, 70, 32, 0.18));
+    }
+
+    .envelope-full-shell.is-open .envelope-full-top {
+      transform: rotateX(180deg);
+      z-index: 1;
+    }
+
+    /* Inner Rising Card Preview Inside Fullscreen Envelope */
+    .envelope-full-peek {
+      position: absolute;
+      inset: 6% 5% 8% 5%;
+      z-index: 2;
+      border-radius: 24px;
+      background: linear-gradient(180deg, #FFFFFF 0%, #FAF5EB 100%);
+      border: 1px solid rgba(184, 151, 88, 0.45);
+      box-shadow: 0 12px 40px rgba(92, 72, 38, 0.12);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
+    }
+
+    .envelope-full-shell.is-open .envelope-full-peek {
+      transform: translateY(-14%) scale(1.02);
+    }
+
+    /* Centered Embossed Gold Wax Seal */
+    .wax-seal-btn {
+      position: absolute;
+      top: 53%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 12;
+      width: 102px;
+      height: 102px;
+      border-radius: 9999px;
+      background: radial-gradient(circle at 32% 28%, #ECD49E 0%, #C5A15B 44%, #9A7736 84%, #7A5B23 100%);
+      box-shadow:
+        0 14px 32px rgba(78, 57, 20, 0.42),
+        inset 0 2px 6px rgba(255, 249, 230, 0.78),
+        inset 0 -5px 10px rgba(68, 48, 15, 0.48);
+      border: 2.5px solid rgba(246, 230, 192, 0.75);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.45s ease;
+      animation: sealPulse 2.8s ease-in-out infinite;
+    }
+
+    .wax-seal-btn::before {
+      content: '';
+      position: absolute;
+      inset: 7px;
+      border-radius: 9999px;
+      border: 1.5px dashed rgba(255, 246, 220, 0.72);
+      box-shadow: inset 0 2px 7px rgba(68, 48, 15, 0.38);
+    }
+
+    .wax-seal-btn:hover {
+      transform: translate(-50%, -50%) scale(1.07);
+    }
+
+    .wax-seal-btn:active {
+      transform: translate(-50%, -50%) scale(0.95);
+    }
+
+    .envelope-full-shell.is-open .wax-seal-btn {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.68);
+      pointer-events: none;
+    }
+
+    @keyframes sealPulse {
+      0%, 100% { box-shadow: 0 14px 32px rgba(78, 57, 20, 0.42), 0 0 0 0 rgba(197, 161, 91, 0.48); }
+      50% { box-shadow: 0 16px 36px rgba(78, 57, 20, 0.46), 0 0 0 16px rgba(197, 161, 91, 0); }
+    }
+
+    /* =========================================================
+       VERTICAL SCROLL / SNAP-SLIDE INVITATION SECTIONS
+    ========================================================== */
+    .vertical-invitation-flow {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .vertical-invitation-flow.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .scroll-section {
+      min-height: 100dvh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4.5rem 1rem 3rem 1rem;
+    }
+
+    /* Silky Scroll-Reveal Animation */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(32px) scale(0.98);
+      transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .reveal-on-scroll.in-view {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    /* Pearl Bead Accent */
+    .pearl-bead {
+      display: inline-block;
+      border-radius: 9999px;
+      background: radial-gradient(circle at 32% 30%, #FFFFFF 0%, #F6EFE2 55%, #D9C8A9 100%);
+      box-shadow: 0 2px 5px rgba(120, 94, 43, 0.25), inset -1px -1px 2px rgba(168, 142, 96, 0.35);
+    }
+
+    /* Subtle Bounce for Scroll Down Cue */
+    @keyframes floatDown {
+      0%, 100% { transform: translateY(0); opacity: 0.65; }
+      50% { transform: translateY(6px); opacity: 1; }
+    }
+    .scroll-cue-anim {
+      animation: floatDown 2.2s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body class="lace-bg-pattern select-none lock-scroll">
+
+  <!-- Ambient Floating Pearl & Gold Dust Canvas -->
+  <canvas id="particleCanvas" class="fixed inset-0 w-full h-full pointer-events-none z-10"></canvas>
+
+  <!-- Top Floating Controls: Close Envelope & Sound Toggle -->
+  <header class="fixed top-3.5 left-0 right-0 z-40 px-4 flex items-center justify-between max-w-2xl mx-auto pointer-events-none">
+    <button
+      id="replayEnvelopeBtn"
+      type="button"
+      title="Close Envelope"
+      class="pointer-events-auto opacity-0 transition-all duration-500 flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/85 backdrop-blur-md border border-champagne-400/45 text-champagne-700 text-xs font-cinzel tracking-wider shadow-sm hover:bg-white active:scale-95"
+    >
+      <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+      <span>Envelope</span>
+    </button>
+
+    <button
+      id="musicToggleBtn"
+      type="button"
+      aria-label="Toggle Ambient Music"
+      class="pointer-events-auto flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/85 backdrop-blur-md border border-champagne-400/50 text-champagne-700 text-xs font-cinzel tracking-wider shadow-sm hover:bg-white transition active:scale-95"
+    >
+      <span id="musicIconPlaying" class="hidden flex items-end gap-0.5 h-3">
+        <span class="w-0.5 bg-champagne-500 animate-pulse h-2"></span>
+        <span class="w-0.5 bg-champagne-600 animate-bounce h-3"></span>
+        <span class="w-0.5 bg-champagne-500 animate-pulse h-1.5"></span>
+      </span>
+      <svg id="musicIconMuted" class="w-3.5 h-3.5 text-champagne-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" />
+      </svg>
+      <span id="musicLabel">Sound Off</span>
+    </button>
+  </header>
+
+  <!-- =========================================================
+       STAGE 1: FULL-VIEWPORT (100vw x 100dvh) PEARL-LACE ENVELOPE
+  ========================================================== -->
+  <section id="envelopeOverlay" onclick="window.openWeddingEnvelope()" class="fullscreen-envelope-overlay" aria-label="Full Screen Wedding Envelope">
+    <div id="envelopeShell" class="envelope-full-shell" role="button" tabindex="0" aria-label="Tap to Open Invitation">
+
+      <!-- Subtle Silk Embossed Crest Background Texture -->
+      <div class="absolute inset-0 lace-bg-pattern opacity-70 pointer-events-none"></div>
+
+      <!-- Inner Rising Invitation Card Preview -->
+      <div class="envelope-full-peek px-6 text-center">
+        <p class="font-arabic text-xl sm:text-2xl text-champagne-600 mb-2">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</p>
+        <p class="font-cinzel text-xs sm:text-sm tracking-[0.35em] text-champagne-700 uppercase">Amna &amp; Hamza</p>
+      </div>
+
+      <!-- Side Silk Pocket Folds -->
+      <div class="envelope-side-folds"></div>
+
+      <!-- Bottom Full-Screen Flap with Pearl Lace Trim -->
+      <div class="envelope-full-bottom">
+        <svg class="w-full h-full" viewBox="0 0 1000 500" preserveAspectRatio="none">
+          <!-- Intricate Pearl-Lace V-Edge Trim along Bottom Flap -->
+          <polyline points="0,500 500,30 1000,500" fill="none" stroke="#B89758" stroke-width="2" stroke-opacity="0.55" />
+          <polyline points="0,500 500,46 1000,500" fill="none" stroke="#B89758" stroke-width="1.4" stroke-dasharray="3 7" stroke-opacity="0.75" />
+        </svg>
+      </div>
+
+      <!-- Top Hinged Full-Screen Triangular Flap -->
+      <div class="envelope-full-top">
+        <!-- Gold & Pearl Lace Trim Along Triangular Flap Edges -->
+        <svg class="w-full h-full" viewBox="0 0 1000 500" preserveAspectRatio="none">
+          <polyline points="0,0 500,480 1000,0" fill="none" stroke="#B89758" stroke-width="2.2" stroke-opacity="0.65" />
+          <polyline points="0,0 500,462 1000,0" fill="none" stroke="#B89758" stroke-width="1.5" stroke-dasharray="3 8" stroke-opacity="0.85" />
+        </svg>
+
+        <!-- Flap Header Typography matching Screenshot -->
+        <div class="absolute top-12 sm:top-16 left-0 right-0 flex flex-col items-center text-center px-4 pointer-events-none">
+          <p class="font-cinzel text-[10px] sm:text-xs tracking-[0.34em] uppercase text-champagne-700 font-medium">
+            The Wedding Celebration Of
+          </p>
+          <div class="flex items-center justify-center gap-2.5 my-3">
+            <span class="h-px w-10 sm:w-14 bg-champagne-400/65"></span>
+            <span class="pearl-bead w-1.5 h-1.5"></span>
+            <span class="pearl-bead w-2 h-2"></span>
+            <span class="pearl-bead w-1.5 h-1.5"></span>
+            <span class="h-px w-10 sm:w-14 bg-champagne-400/65"></span>
+          </div>
+          <h2 class="font-script text-4xl sm:text-5xl text-champagne-600 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
+            Amna &amp; Hamza
+          </h2>
+        </div>
+      </div>
+
+      <!-- Centered Embossed Gold Wax Seal ('A & H' only, no 'SEAL' text) -->
+      <button id="waxSealBtn" type="button" onclick="event.stopPropagation(); window.openWeddingEnvelope();" class="wax-seal-btn" aria-label="Tap Wax Seal to Open">
+        <span class="font-cinzel font-semibold text-2xl sm:text-[26px] tracking-[0.12em] text-[#FFF8E7] drop-shadow-[0_1.5px_2px_rgba(68,48,15,0.65)] select-none">
+          A &amp; H
+        </span>
+      </button>
+
+      <!-- Bottom Tap Instruction Prompt -->
+      <div class="absolute bottom-9 sm:bottom-12 left-0 right-0 z-10 text-center px-4 pointer-events-none">
+        <p class="font-cinzel text-xs sm:text-sm tracking-[0.32em] uppercase text-champagne-700 font-medium">
+          Tap To Open
+        </p>
+        <div class="flex items-center justify-center gap-2 mt-2.5">
+          <span class="pearl-bead w-1.5 h-1.5"></span>
+          <span class="pearl-bead w-2 h-2"></span>
+          <span class="pearl-bead w-1.5 h-1.5"></span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================
+       STAGE 2: VERTICAL SCROLL / SLIDE LUXURY INVITATION
+  ========================================================== -->
+  <main id="verticalInvitation" class="vertical-invitation-flow relative z-20 w-full max-w-xl mx-auto">
+
+    <!-- =======================================================
+         SECTION 1: BISMILLAH & COUPLE TITLE
+    ======================================================== -->
+    <section id="section-couple" class="scroll-section">
+      <div class="reveal-on-scroll pearl-lace-frame w-full rounded-[28px] p-3.5 sm:p-5 relative overflow-hidden">
+        <!-- Corner Filigree SVGs -->
+        <svg class="absolute top-3.5 left-3.5 w-14 h-14 text-champagne-500/75 pointer-events-none z-20" viewBox="0 0 80 80" fill="none">
+          <path d="M6 68 C6 28, 28 6, 68 6" stroke="currentColor" stroke-width="1.3" />
+          <circle cx="14" cy="14" r="3" fill="#FFFDF9" stroke="currentColor" stroke-width="1.2" />
+        </svg>
+        <svg class="absolute top-3.5 right-3.5 w-14 h-14 text-champagne-500/75 pointer-events-none z-20 scale-x-[-1]" viewBox="0 0 80 80" fill="none">
+          <path d="M6 68 C6 28, 28 6, 68 6" stroke="currentColor" stroke-width="1.3" />
+          <circle cx="14" cy="14" r="3" fill="#FFFDF9" stroke="currentColor" stroke-width="1.2" />
+        </svg>
+        <svg class="absolute bottom-3.5 left-3.5 w-14 h-14 text-champagne-500/75 pointer-events-none z-20 scale-y-[-1]" viewBox="0 0 80 80" fill="none">
+          <path d="M6 68 C6 28, 28 6, 68 6" stroke="currentColor" stroke-width="1.3" />
+          <circle cx="14" cy="14" r="3" fill="#FFFDF9" stroke="currentColor" stroke-width="1.2" />
+        </svg>
+        <svg class="absolute bottom-3.5 right-3.5 w-14 h-14 text-champagne-500/75 pointer-events-none z-20 scale-[-1]" viewBox="0 0 80 80" fill="none">
+          <path d="M6 68 C6 28, 28 6, 68 6" stroke="currentColor" stroke-width="1.3" />
+          <circle cx="14" cy="14" r="3" fill="#FFFDF9" stroke="currentColor" stroke-width="1.2" />
+        </svg>
+
+        <div class="inner-gold-border rounded-[20px] bg-[#FFFDF9]/95 px-6 py-12 sm:py-16 text-center flex flex-col items-center justify-center space-y-6">
+          <p class="font-arabic text-2xl sm:text-3xl text-champagne-600 leading-relaxed">
+            بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم
+          </p>
+
+          <p class="font-cinzel text-[11px] sm:text-xs tracking-[0.34em] uppercase text-champagne-600">
+            Together With Their Families
+          </p>
+
+          <div class="space-y-2 py-2">
+            <h1 class="font-cinzel font-semibold text-4xl sm:text-5xl tracking-[0.18em] gold-foil-text">
+              AMNA
+            </h1>
+            <p class="font-script text-4xl sm:text-5xl text-champagne-500 leading-none">
+              &amp;
+            </p>
+            <h1 class="font-cinzel font-semibold text-4xl sm:text-5xl tracking-[0.18em] gold-foil-text">
+              HAMZA
+            </h1>
+          </div>
+
+          <div class="flex items-center justify-center gap-2.5">
+            <span class="h-px w-14 bg-champagne-400/50"></span>
+            <span class="pearl-bead w-2 h-2"></span>
+            <span class="h-px w-14 bg-champagne-400/50"></span>
+          </div>
+
+          <p class="font-cormorant italic text-lg sm:text-xl text-champagne-700 max-w-sm">
+            Cordially invite you to grace the auspicious occasions of their Nikkah &amp; Mayo
+          </p>
+
+          <div class="pt-4 scroll-cue-anim text-champagne-600 flex flex-col items-center gap-1">
+            <span class="font-cinzel text-[9px] tracking-[0.28em] uppercase">Scroll Down</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         SECTION 2: FAMILIES & LINEAGE
+    ======================================================== -->
+    <section id="section-families" class="scroll-section">
+      <div class="reveal-on-scroll pearl-lace-frame w-full rounded-[28px] p-3.5 sm:p-5 relative overflow-hidden">
+        <!-- Corner Filigree SVGs -->
+        <svg class="absolute top-3.5 left-3.5 w-14 h-14 text-champagne-500/75 pointer-events-none z-20" viewBox="0 0 80 80" fill="none">
+          <path d="M6 68 C6 28, 28 6, 68 6" stroke="currentColor" stroke-width="1.3" />
+          <circle cx="14" cy="14" r="3" fill="#FFFDF9" stroke="currentColor" stroke-width="1.2" />
+        </svg>
+        <svg class="absolute top-3.5 right-3.5 w-14 h-14 text-champagne-500/75 pointer-events-none z-20 scale-x-[-1]" viewBox="0 0 80 80" fill="none">
+          <path d="M6 68 C6 28, 28 6, 68 6" stroke="currentColor" stroke-width="1.3" />
+          <circle cx="14" cy="14" r="3" fill="#FFFDF9" stroke="currentColor" stroke-width="1.2" />
+        </svg>
+        <svg class="absolute bottom-3.5 left-3.5 w-14 h-14 text-champagne-500/75 pointer-events-none z-20 scale-y-[-1]" viewBox="0 0 80 80" fill="none">
+          <path d="M6 68 C6 28, 28 6, 68 6" stroke="currentColor" stroke-width="1.3" />
+          <circle cx="14" cy="14" r="3" fill="#FFFDF9" stroke="currentColor" stroke-width="1.2" />
+        </svg>
+        <svg class="absolute bottom-3.5 right-3.5 w-14 h-14 text-champagne-500/75 pointer-events-none z-20 scale-[-1]" viewBox="0 0 80 80" fill="none">
+          <path d="M6 68 C6 28, 28 6, 68 6" stroke="currentColor" stroke-width="1.3" />
+          <circle cx="14" cy="14" r="3" fill="#FFFDF9" stroke="currentColor" stroke-width="1.2" />
+        </svg>
+
+        <div class="inner-gold-border rounded-[20px] bg-[#FFFDF9]/95 px-6 py-12 sm:py-16 text-center flex flex-col items-center justify-center space-y-7">
+          <p class="font-cinzel text-xs tracking-[0.34em] uppercase text-champagne-600">
+            In The Name Of Allah
+          </p>
+
+          <!-- Bride Lineage (First - Bride's Side) -->
+          <div class="space-y-1.5">
+            <h2 class="font-cinzel font-semibold text-2xl sm:text-3xl tracking-[0.2em] gold-foil-text">
+              AMNA
+            </h2>
+            <p class="font-cinzel text-[11px] sm:text-xs tracking-[0.26em] uppercase text-champagne-600">
+              DAUGHTER OF
+            </p>
+            <p class="font-cinzel font-medium text-base sm:text-lg tracking-[0.14em] text-[#4A3E2D]">
+              Mr. AND Mrs. AMIN
+            </p>
+          </div>
+
+          <!-- Ornamental Divider -->
+          <div class="flex items-center justify-center gap-3">
+            <span class="h-px w-14 bg-champagne-400/50"></span>
+            <span class="font-script text-3xl text-champagne-500">&amp;</span>
+            <span class="h-px w-14 bg-champagne-400/50"></span>
+          </div>
+
+          <!-- Groom Lineage (Second) -->
+          <div class="space-y-1.5">
+            <h2 class="font-cinzel font-semibold text-2xl sm:text-3xl tracking-[0.2em] gold-foil-text">
+              HAMZA
+            </h2>
+            <p class="font-cinzel text-[11px] sm:text-xs tracking-[0.26em] uppercase text-champagne-600">
+              SON OF
+            </p>
+            <p class="font-cinzel font-medium text-base sm:text-lg tracking-[0.14em] text-[#4A3E2D]">
+              Mr. AND Mrs. ZAHID
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         SECTION 3: EVENT SCHEDULE (NIKKAH & MAYO — 29 NOVEMBER 2026)
+    ======================================================== -->
+    <section id="section-schedule" class="scroll-section">
+      <div class="reveal-on-scroll pearl-lace-frame w-full rounded-[28px] p-3.5 sm:p-5 relative overflow-hidden">
+        <!-- Corner Filigree SVGs -->
+        <svg class="absolute top-3.5 left-3.5 w-14 h-14 text-champagne-500/75 pointer-events-none z-20" viewBox="0 0 80 80" fill="none">
+          <path d="M6 68 C6 28, 28 6, 68 6" stroke="currentColor" stroke-width="1.3" />
+          <circle cx="14" cy="14" r="3" fill="#FFFDF9" stroke="currentColor" stroke-width="1.2" />
+        </svg>
+        <svg class="absolute top-3.5 right-3.5 w-14 h-14 text-champagne-500/75 pointer-events-none z-20 scale-x-[-1]" viewBox="0 0 80 80" fill="none">
+          <path d="M6 68 C6 28, 28 6, 68 6" stroke="currentColor" stroke-width="1.3" />
+          <circle cx="14" cy="14" r="3" fill="#FFFDF9" stroke="currentColor" stroke-width="1.2" />
+        </svg>
+        <svg class="absolute bottom-3.5 left-3.5 w-14 h-14 text-champagne-500/75 pointer-events-none z-20 scale-y-[-1]" viewBox="0 0 80 80" fill="none">
+          <path d="M6 68 C6 28, 28 6, 68 6" stroke="currentColor" stroke-width="1.3" />
+          <circle cx="14" cy="14" r="3" fill="#FFFDF9" stroke="currentColor" stroke-width="1.2" />
+        </svg>
+        <svg class="absolute bottom-3.5 right-3.5 w-14 h-14 text-champagne-500/75 pointer-events-none z-20 scale-[-1]" viewBox="0 0 80 80" fill="none">
+          <path d="M6 68 C6 28, 28 6, 68 6" stroke="currentColor" stroke-width="1.3" />
+          <circle cx="14" cy="14" r="3" fill="#FFFDF9" stroke="currentColor" stroke-width="1.2" />
+        </svg>
+
+        <div class="inner-gold-border rounded-[20px] bg-[#FFFDF9]/95 px-6 py-12 sm:py-14 text-center flex flex-col items-center justify-center space-y-6">
+          <div>
+            <p class="font-cinzel text-xs tracking-[0.34em] uppercase text-champagne-600">
+              Wedding Celebrations
+            </p>
+            <div class="mt-3 py-3.5 px-6 rounded-2xl bg-gradient-to-r from-pearl-100/75 via-white to-pearl-100/75 border border-champagne-400/45">
+              <p class="font-cinzel text-[11px] tracking-[0.3em] uppercase text-champagne-600">
+                Sunday
+              </p>
+              <h2 class="font-cinzel font-semibold text-2xl sm:text-3xl tracking-[0.18em] gold-foil-text mt-0.5">
+                29 NOVEMBER 2026
+              </h2>
+            </div>
+          </div>
+
+          <!-- Events Grid: NIKKAH & MAYO -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+            <!-- Event 1: NIKKAH -->
+            <div class="p-6 rounded-2xl bg-white/95 border border-champagne-400/45 shadow-[0_8px_24px_rgba(184,151,88,0.1)] space-y-2.5">
+              <div class="flex items-center justify-center gap-2">
+                <svg class="w-4 h-4 text-champagne-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                </svg>
+                <h3 class="font-cinzel font-semibold text-xl sm:text-2xl tracking-[0.22em] text-champagne-700">
+                  NIKKAH
+                </h3>
+              </div>
+
+              <div class="flex items-center justify-center gap-2">
+                <span class="h-px w-10 bg-champagne-300"></span>
+                <span class="pearl-bead w-1.5 h-1.5"></span>
+                <span class="h-px w-10 bg-champagne-300"></span>
+              </div>
+
+              <p class="font-cinzel font-semibold text-lg sm:text-xl tracking-[0.18em] text-[#4A3E2D]">
+                5:00 PM
+              </p>
+            </div>
+
+            <!-- Event 2: MAYO -->
+            <div class="p-6 rounded-2xl bg-white/95 border border-champagne-400/45 shadow-[0_8px_24px_rgba(184,151,88,0.1)] space-y-2.5">
+              <div class="flex items-center justify-center gap-2">
+                <svg class="w-4 h-4 text-champagne-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                  <circle cx="12" cy="12" r="4" />
+                  <path stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41" />
+                </svg>
+                <h3 class="font-cinzel font-semibold text-xl sm:text-2xl tracking-[0.22em] text-champagne-700">
+                  MAYO
+                </h3>
+              </div>
+
+              <div class="flex items-center justify-center gap-2">
+                <span class="h-px w-10 bg-champagne-300"></span>
+                <span class="pearl-bead w-1.5 h-1.5"></span>
+                <span class="h-px w-10 bg-champagne-300"></span>
+              </div>
+
+              <p class="font-cinzel font-semibold text-lg sm:text-xl tracking-[0.18em] text-[#4A3E2D]">
+                7:00 PM
+              </p>
+            </div>
+          </div>
+
+          <!-- View Location Button -->
+          <div class="pt-1">
+            <a
+              href="https://www.google.com/maps/place/31%C2%B033'21.7%22N+74%C2%B023'29.3%22E/@31.5560138,74.3889005,17z/data=!3m1!4b1!4m4!3m3!8m2!3d31.5560138!4d74.3914754?hl=en&entry=ttu&g_ep=EgoyMDI2MTExOC4xIKXMDSoASAFQAw%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2.5 px-7 py-3 rounded-full bg-gradient-to-r from-[#C8A766] via-[#B89758] to-[#9A7B3E] text-[#FFFDF9] font-cinzel text-xs sm:text-sm font-semibold tracking-[0.22em] uppercase shadow-[0_10px_24px_rgba(154,123,62,0.32)] border border-champagne-300/70 hover:brightness-105 active:scale-95 transition-all"
+            >
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-6-5.686-6-10a6 6 0 1 1 12 0c0 4.314-6 10-6 10Z" />
+                <circle cx="12" cy="11" r="2.2" />
+              </svg>
+              <span>View Location</span>
+            </a>
+          </div>
+
+          <p class="font-cormorant italic text-base sm:text-lg text-champagne-700 pt-1">
+            Your presence and prayers are warmly requested
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================
+         SECTION 4: LIVE WEDDING COUNTDOWN & CLOSING FOOTER
+    ======================================================== -->
+    <section id="section-countdown" class="scroll-section">
+      <div class="reveal-on-scroll pearl-lace-frame w-full rounded-[28px] p-3.5 sm:p-5 relative overflow-hidden">
+        <!-- Corner Filigree SVGs -->
+        <svg class="absolute top-3.5 left-3.5 w-14 h-14 text-champagne-500/75 pointer-events-none z-20" viewBox="0 0 80 80" fill="none">
+          <path d="M6 68 C6 28, 28 6, 68 6" stroke="currentColor" stroke-width="1.3" />
+          <circle cx="14" cy="14" r="3" fill="#FFFDF9" stroke="currentColor" stroke-width="1.2" />
+        </svg>
+        <svg class="absolute top-3.5 right-3.5 w-14 h-14 text-champagne-500/75 pointer-events-none z-20 scale-x-[-1]" viewBox="0 0 80 80" fill="none">
+          <path d="M6 68 C6 28, 28 6, 68 6" stroke="currentColor" stroke-width="1.3" />
+          <circle cx="14" cy="14" r="3" fill="#FFFDF9" stroke="currentColor" stroke-width="1.2" />
+        </svg>
+        <svg class="absolute bottom-3.5 left-3.5 w-14 h-14 text-champagne-500/75 pointer-events-none z-20 scale-y-[-1]" viewBox="0 0 80 80" fill="none">
+          <path d="M6 68 C6 28, 28 6, 68 6" stroke="currentColor" stroke-width="1.3" />
+          <circle cx="14" cy="14" r="3" fill="#FFFDF9" stroke="currentColor" stroke-width="1.2" />
+        </svg>
+        <svg class="absolute bottom-3.5 right-3.5 w-14 h-14 text-champagne-500/75 pointer-events-none z-20 scale-[-1]" viewBox="0 0 80 80" fill="none">
+          <path d="M6 68 C6 28, 28 6, 68 6" stroke="currentColor" stroke-width="1.3" />
+          <circle cx="14" cy="14" r="3" fill="#FFFDF9" stroke="currentColor" stroke-width="1.2" />
+        </svg>
+
+        <div class="inner-gold-border rounded-[20px] bg-[#FFFDF9]/95 px-5 sm:px-7 py-12 sm:py-14 text-center flex flex-col items-center justify-center space-y-7">
+          <div>
+            <p class="font-cinzel text-xs tracking-[0.32em] uppercase text-champagne-600">
+              Counting Down To Forever
+            </p>
+            <h2 class="font-script text-4xl sm:text-5xl text-champagne-600 mt-1">
+              The Royal Union
+            </h2>
+            <div class="flex items-center justify-center gap-2 mt-2">
+              <span class="h-px w-12 bg-champagne-400/50"></span>
+              <span class="pearl-bead w-2 h-2"></span>
+              <span class="h-px w-12 bg-champagne-400/50"></span>
+            </div>
+          </div>
+
+          <!-- 4 Live Gold-Bordered Pearl Countdown Cards -->
+          <div class="grid grid-cols-4 gap-2.5 sm:gap-3.5 w-full">
+            <!-- Days -->
+            <div class="py-4 px-1.5 rounded-2xl bg-gradient-to-b from-white to-pearl-100/90 border border-champagne-400/50 shadow-[0_6px_18px_rgba(184,151,88,0.1)]">
+              <span id="cd-days" class="block font-cinzel font-semibold text-2xl sm:text-3xl gold-foil-text">00</span>
+              <span class="block font-cinzel text-[9px] sm:text-[10px] tracking-[0.18em] uppercase text-champagne-600 mt-1">Days</span>
+            </div>
+
+            <!-- Hours -->
+            <div class="py-4 px-1.5 rounded-2xl bg-gradient-to-b from-white to-pearl-100/90 border border-champagne-400/50 shadow-[0_6px_18px_rgba(184,151,88,0.1)]">
+              <span id="cd-hours" class="block font-cinzel font-semibold text-2xl sm:text-3xl gold-foil-text">00</span>
+              <span class="block font-cinzel text-[9px] sm:text-[10px] tracking-[0.18em] uppercase text-champagne-600 mt-1">Hours</span>
+            </div>
+
+            <!-- Minutes -->
+            <div class="py-4 px-1.5 rounded-2xl bg-gradient-to-b from-white to-pearl-100/90 border border-champagne-400/50 shadow-[0_6px_18px_rgba(184,151,88,0.1)]">
+              <span id="cd-minutes" class="block font-cinzel font-semibold text-2xl sm:text-3xl gold-foil-text">00</span>
+              <span class="block font-cinzel text-[9px] sm:text-[10px] tracking-[0.18em] uppercase text-champagne-600 mt-1">Mins</span>
+            </div>
+
+            <!-- Seconds -->
+            <div class="py-4 px-1.5 rounded-2xl bg-gradient-to-b from-white to-pearl-100/90 border border-champagne-400/50 shadow-[0_6px_18px_rgba(184,151,88,0.1)]">
+              <span id="cd-seconds" class="block font-cinzel font-semibold text-2xl sm:text-3xl gold-foil-text">00</span>
+              <span class="block font-cinzel text-[9px] sm:text-[10px] tracking-[0.18em] uppercase text-champagne-600 mt-1">Secs</span>
+            </div>
+          </div>
+
+          <p id="countdownStatusText" class="font-cormorant italic text-base sm:text-lg text-champagne-600">
+            Until Nikkah &amp; Mayo &bull; November 29, 2026 at 5:00 PM
+          </p>
+
+          <!-- Ornamental Divider -->
+          <div class="flex items-center justify-center gap-2 pt-1">
+            <span class="h-px w-10 bg-champagne-400/40"></span>
+            <span class="pearl-bead w-1.5 h-1.5"></span>
+            <span class="pearl-bead w-2 h-2"></span>
+            <span class="pearl-bead w-1.5 h-1.5"></span>
+            <span class="h-px w-10 bg-champagne-400/40"></span>
+          </div>
+
+          <!-- Closing Footer -->
+          <footer class="pt-1 space-y-1">
+            <p class="font-script text-3xl sm:text-4xl text-champagne-600">
+              With Love &amp; Duas
+            </p>
+            <p class="font-cinzel text-[11px] tracking-[0.28em] uppercase text-champagne-700">
+              Amna &amp; Hamza
+            </p>
+          </footer>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Optional Local MP3 Audio (If you upload bismillah.mp3 to GitHub, it plays automatically; otherwise the built-in Bismillah melody plays) -->
+  <audio id="bgWeddingAudio" preload="auto" loop>
+    <source src="bismillah.mp3" type="audio/mpeg" />
+  </audio>
+
+  <script>
+    /**
+     * Pearl Lace Luxury Wedding Invitation Logic
+     * - Full-Viewport (100vw x 100dvh) 3D Envelope & Wax Seal Opening
+     * - Smooth Vertical Scroll & IntersectionObserver Reveal Animations
+     * - Live Countdown Timer to November 29, 2026 at 5:00 PM
+     * - "Bismillah Bismillah Tere Naam Se Shuru" Chorus Melody + Optional MP3 Support
+     * - Floating Pearl & Champagne Gold Dust Particle System
+     */
+    (function () {
+      const envelopeOverlay = document.getElementById('envelopeOverlay');
+      const envelopeShell = document.getElementById('envelopeShell');
+      const waxSealBtn = document.getElementById('waxSealBtn');
+      const verticalInvitation = document.getElementById('verticalInvitation');
+      const replayEnvelopeBtn = document.getElementById('replayEnvelopeBtn');
+      const bgWeddingAudio = document.getElementById('bgWeddingAudio');
+
+      const musicToggleBtn = document.getElementById('musicToggleBtn');
+      const musicIconPlaying = document.getElementById('musicIconPlaying');
+      const musicIconMuted = document.getElementById('musicIconMuted');
+      const musicLabel = document.getElementById('musicLabel');
+
+      let isEnvelopeOpened = false;
+      let audioCtx = null;
+      let isMusicPlaying = false;
+      let melodyTimeout = null;
+      let usingCustomMp3 = false;
+
+      // =========================================================
+      // 1. FULL-VIEWPORT ENVELOPE OPEN & CLOSE HANDLERS
+      // =========================================================
+      window.openWeddingEnvelope = function () {
+        if (isEnvelopeOpened) return;
+        isEnvelopeOpened = true;
+
+        // Flip open the 3D top triangular flap
+        envelopeShell.classList.add('is-open');
+
+        // Start Bismillah background melody on user interaction
+        if (!isMusicPlaying) {
+          startMusic();
+        }
+
+        // Dissolve full-screen envelope and unlock vertical scrolling
+        setTimeout(() => {
+          envelopeOverlay.classList.add('is-dissolved');
+          document.body.classList.remove('lock-scroll');
+          document.body.classList.add('unlock-scroll');
+          verticalInvitation.classList.add('is-visible');
+
+          // Show top-left Envelope replay button
+          replayEnvelopeBtn.classList.remove('opacity-0');
+          replayEnvelopeBtn.classList.add('opacity-100');
+
+          // Trigger scroll-reveal check for visible cards
+          triggerInitialReveals();
+        }, 750);
+      };
+
+      // Keyboard accessibility (Enter / Space on envelope)
+      envelopeShell.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          window.openWeddingEnvelope();
+        }
+      });
+
+      // Replay / Close Envelope button handler
+      replayEnvelopeBtn.addEventListener('click', () => {
+        isEnvelopeOpened = false;
+        window.scrollTo({ top: 0, behavior: 'instant' });
+
+        verticalInvitation.classList.remove('is-visible');
+        replayEnvelopeBtn.classList.remove('opacity-100');
+        replayEnvelopeBtn.classList.add('opacity-0');
+
+        document.body.classList.remove('unlock-scroll');
+        document.body.classList.add('lock-scroll');
+
+        envelopeOverlay.classList.remove('is-dissolved');
+        setTimeout(() => {
+          envelopeShell.classList.remove('is-open');
+        }, 120);
+      });
+
+      // =========================================================
+      // 2. SMOOTH SCROLL-REVEAL OBSERVER
+      // =========================================================
+      const revealCards = document.querySelectorAll('.reveal-on-scroll');
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('in-view');
+            }
+          });
+        },
+        { threshold: 0.14 }
+      );
+
+      revealCards.forEach((card) => revealObserver.observe(card));
+
+      function triggerInitialReveals() {
+        revealCards.forEach((card) => {
+          const rect = card.getBoundingClientRect();
+          if (rect.top < window.innerHeight * 0.92) {
+            card.classList.add('in-view');
+          }
+        });
+      }
+
+      // =========================================================
+      // 3. "BISMILLAH BISMILLAH TERE NAAM SE SHURU" AUDIO ENGINE
+      // =========================================================
+      function updateMusicUI(playing) {
+        if (playing) {
+          musicIconPlaying.classList.remove('hidden');
+          musicIconMuted.classList.add('hidden');
+          musicLabel.textContent = 'Bismillah On';
+        } else {
+          musicIconPlaying.classList.add('hidden');
+          musicIconMuted.classList.remove('hidden');
+          musicLabel.textContent = 'Sound Off';
+        }
+      }
+
+      // Gentle expressive synth bell/harp rendition of the popular chorus line:
+      // "Bismillah, Bismillah, Tere naam se shuru..."
+      const bismillahChorusNotes = [
+        // "Bis - mil - lah"
+        { freq: 392.00, dur: 0.34, gap: 0.36 }, // G4
+        { freq: 440.00, dur: 0.34, gap: 0.36 }, // A4
+        { freq: 493.88, dur: 0.68, gap: 0.78 }, // B4
+        // "Bis - mil - lah"
+        { freq: 493.88, dur: 0.34, gap: 0.36 }, // B4
+        { freq: 587.33, dur: 0.34, gap: 0.36 }, // D5
+        { freq: 523.25, dur: 0.68, gap: 0.80 }, // C5
+        // "Te - re naam se shu - ru"
+        { freq: 493.88, dur: 0.32, gap: 0.34 }, // B4
+        { freq: 440.00, dur: 0.32, gap: 0.34 }, // A4
+        { freq: 493.88, dur: 0.42, gap: 0.44 }, // B4
+        { freq: 440.00, dur: 0.32, gap: 0.34 }, // A4
+        { freq: 392.00, dur: 0.34, gap: 0.36 }, // G4
+        { freq: 369.99, dur: 0.42, gap: 0.44 }, // F#4
+        { freq: 392.00, dur: 0.90, gap: 1.35 }  // G4
+      ];
+
+      function playSynthNote(freq, duration) {
+        if (!audioCtx) return;
+        const now = audioCtx.currentTime;
+
+        const oscMain = audioCtx.createOscillator();
+        const oscHarmonic = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+
+        oscMain.type = 'sine';
+        oscMain.frequency.setValueAtTime(freq, now);
+
+        oscHarmonic.type = 'triangle';
+        oscHarmonic.frequency.setValueAtTime(freq * 2, now);
+
+        const harmonicGain = audioCtx.createGain();
+        harmonicGain.gain.setValueAtTime(0.08, now);
+
+        gainNode.gain.setValueAtTime(0.0001, now);
+        gainNode.gain.exponentialRampToValueAtTime(0.14, now + 0.04);
+        gainNode.gain.exponentialRampToValueAtTime(0.0001, now + duration + 0.35);
+
+        oscMain.connect(gainNode);
+        oscHarmonic.connect(harmonicGain);
+        harmonicGain.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        oscMain.start(now);
+        oscHarmonic.start(now);
+        oscMain.stop(now + duration + 0.4);
+        oscHarmonic.stop(now + duration + 0.4);
+      }
+
+      function scheduleChorusLoop(index = 0) {
+        if (!isMusicPlaying || usingCustomMp3) return;
+        const note = bismillahChorusNotes[index];
+        playSynthNote(note.freq, note.dur);
+
+        const nextIndex = (index + 1) % bismillahChorusNotes.length;
+        melodyTimeout = setTimeout(() => {
+          scheduleChorusLoop(nextIndex);
+        }, note.gap * 1000);
+      }
+
+      function startSynthFallback() {
+        try {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (!audioCtx) {
+            audioCtx = new AudioContextClass();
+          }
+          if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+          }
+          clearTimeout(melodyTimeout);
+          scheduleChorusLoop(0);
+        } catch (err) {
+          console.warn('Web Audio unavailable:', err);
+        }
+      }
+
+      function startMusic() {
+        isMusicPlaying = true;
+        updateMusicUI(true);
+
+        // Try local bismillah.mp3 first if uploaded; fallback to built-in Bismillah chorus melody
+        if (bgWeddingAudio) {
+          const playPromise = bgWeddingAudio.play();
+          if (playPromise !== undefined) {
+            playPromise
+              .then(() => {
+                usingCustomMp3 = true;
+              })
+              .catch(() => {
+                usingCustomMp3 = false;
+                startSynthFallback();
+              });
+          } else {
+            startSynthFallback();
+          }
+        } else {
+          startSynthFallback();
+        }
+      }
+
+      function stopMusic() {
+        isMusicPlaying = false;
+        updateMusicUI(false);
+        clearTimeout(melodyTimeout);
+
+        if (bgWeddingAudio && !bgWeddingAudio.paused) {
+          bgWeddingAudio.pause();
+        }
+      }
+
+      musicToggleBtn.addEventListener('click', () => {
+        if (isMusicPlaying) {
+          stopMusic();
+        } else {
+          startMusic();
+        }
+      });
+
+      // =========================================================
+      // 4. LIVE COUNTDOWN TIMER (NOVEMBER 29, 2026 AT 5:00 PM)
+      // =========================================================
+      const targetDate = new Date('2026-11-29T17:00:00').getTime();
+      const daysEl = document.getElementById('cd-days');
+      const hoursEl = document.getElementById('cd-hours');
+      const minutesEl = document.getElementById('cd-minutes');
+      const secondsEl = document.getElementById('cd-seconds');
+      const statusTextEl = document.getElementById('countdownStatusText');
+
+      function padZero(num) {
+        return String(num).padStart(2, '0');
+      }
+
+      function updateCountdown() {
+        const now = Date.now();
+        const distance = targetDate - now;
+
+        if (distance <= 0) {
+          daysEl.textContent = '00';
+          hoursEl.textContent = '00';
+          minutesEl.textContent = '00';
+          secondsEl.textContent = '00';
+          statusTextEl.textContent = 'Mubarak! The Wedding Celebrations Have Begun';
+          return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        daysEl.textContent = padZero(days);
+        hoursEl.textContent = padZero(hours);
+        minutesEl.textContent = padZero(minutes);
+        secondsEl.textContent = padZero(seconds);
+      }
+
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      // =========================================================
+      // 5. FLOATING PEARL & CHAMPAGNE GOLD DUST PARTICLES
+      // =========================================================
+      const canvas = document.getElementById('particleCanvas');
+      const ctx = canvas.getContext('2d');
+      let particles = [];
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      class PearlParticle {
+        constructor() {
+          this.reset(true);
+        }
+
+        reset(initial = false) {
+          this.x = Math.random() * canvas.width;
+          this.y = initial ? Math.random() * canvas.height : canvas.height + 10;
+          this.radius = Math.random() * 2.4 + 1.1;
+          this.speedY = -(Math.random() * 0.35 + 0.15);
+          this.speedX = (Math.random() - 0.5) * 0.25;
+          this.alpha = Math.random() * 0.45 + 0.2;
+          this.isGold = Math.random() > 0.45;
+        }
+
+        update() {
+          this.y += this.speedY;
+          this.x += this.speedX;
+          if (this.y < -10) {
+            this.reset(false);
+          }
+        }
+
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          ctx.fillStyle = this.isGold
+            ? `rgba(197, 161, 91, ${this.alpha})`
+            : `rgba(255, 253, 249, ${this.alpha + 0.25})`;
+          ctx.fill();
+        }
+      }
+
+      const particleCount = Math.min(45, Math.floor(window.innerWidth / 22));
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new PearlParticle());
+      }
+
+      function animateParticles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < particles.length; i++) {
+          particles[i].update();
+          particles[i].draw();
+        }
+        requestAnimationFrame(animateParticles);
+      }
+
+      animateParticles();
+    })();
+  </script>
+</body>
+</html>
